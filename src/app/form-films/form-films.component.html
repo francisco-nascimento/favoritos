@@ -1,0 +1,51 @@
+<form [formGroup]="filmeForm" novalidate (ngSubmit)="salvar()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Cadastrar Filmes</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Título" formControlName="titulo">
+            <mat-error *ngIf="filmeForm.controls['titulo'].hasError('required')">
+              Título é <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Elenco" formControlName="elenco">
+            <mat-error *ngIf="filmeForm.controls['elenco'].hasError('required')">
+              Elenco é <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Ano" formControlName="ano">
+            <mat-error *ngIf="filmeForm.controls['ano'].hasError('required')">
+              Ano é <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col">
+              <mat-radio-group formControlName="genero">
+                <mat-radio-button *ngFor="let gen of generos" [value]="gen">
+                  {{ gen }}
+                </mat-radio-button>
+              </mat-radio-group>
+            </div>    
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Salvar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
